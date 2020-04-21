@@ -1,0 +1,85 @@
+# global表示全局配置，online: 线上配置，test：测试环境配置
+
+[global]
+# 版本号
+version	= 1.0
+# 线上、测试模式
+mode = test
+# 工程名
+project = honey
+
+# 工程类型，0：单工程方案；1：多工程baas系统
+project_type = 0
+db = honeyUnofficial
+
+PORT = 8000
+
+PUSHURL = http://t01.me-yun.com:8000/1.0/thirdpush/push
+
+DELETE_CLASS = []
+
+ACCESS_NO_CLASS = ["User","LoginRecords","Violations","SensitiveWord","ShareCopywrite","ProjectClass","AutoMessage"]
+
+mongodbIndex = []
+
+
+[mongodb]
+# mongodb数据库配置
+MONGO_ADDR	=	127.0.0.1
+MONGO_PORT = 27017
+USERNAME	=	arthur
+PASSWORD	=	arthur
+
+
+[redis]
+# redis config
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_PASSWORD=arthur
+REDIS_MAX_CONNECTIONS=10
+REDIS_DBID=0
+REDIS_SUB_CHANNEL=push_channel
+
+[oss]
+#OSS相关
+OSS_ACCESS_KEY_ID = LTAIkQ8yPr2iNv7e
+OSS_ACCESS_KEY_SECRET = DYGeKLDb079W9i0i0bjw458BEJaN5C
+OSS_BUCKET_NAME = heimitest
+PLATFORM = oss
+OSS_ENDPOINT = oss-cn-beijing.aliyuncs.com
+OSS_STS_ROLE_ARN = acs:ram::1250094474097995:role/heimi-test
+OSS_ROLE_SESSION_NAME = oss-biliankeji
+OSS_REGION_ID =cn-beijing
+
+[sms]
+#SMS相关
+SMS_REGION = cn-hangzhou
+SMS_ACCESS_KEY_ID = LTAIkQ8yPr2iNv7e
+SMS_ACCESS_KEY_SECRET = DYGeKLDb079W9i0i0bjw458BEJaN5C
+SMS_TEMPLATE_CODE = SMS_86875087
+SMS_SIGN_NAME = 阿里云短信测试专用
+
+
+[handlers]
+
+/1.0/class/(\w+)/(\w+) = api.ClassHandler.ClassHandler
+/1.0/class/(\w+) = api.ClassHandler.ClassHandler
+/1.0/user/(\w+) = api.UserHandler.UserHandler
+/1.0/user/ = api.UserHandler.UserHandler
+/1.0/file/ = api.FileHandler.FileHandler
+/1.0/file/(\w+) = api.FileHandler.FileHandler
+/sms/(.+) = api.SMSHandler.SMSHandler
+/wx/(\w+) = api.WxHandler.WxHandler
+
+[wx]
+# 当前实例是否作为access_token实例
+WX_ACCESSTOKEN_SERVER = 0
+
+WX_APPID = wx1fe011436b82b249
+WX_APPSECRECT = 527c956b0e6180753e243504fa3e6f3c
+
+# 微信条状登录url
+WX_REDIRECT = xxx
+
+
+
